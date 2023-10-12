@@ -14,7 +14,7 @@ jobs:
           password: '${{ secrets.GITHUB_TOKEN }}'
       - name: Build the social-mind/singlestore-dev-image Docker image
         run: |
-          cat <<EOF docker build --platform=linux/amd64 -f - -t social-mind:singlestore-dev-image . 
+          cat <<EOF | docker build --platform=linux/amd64 -f - -t social-mind:singlestore-dev-image . 
           FROM ghcr.io/singlestore-labs/singlestoredb-dev 
           RUN /scripts/switch-version.sh 8.1.24  ${{secrets.SINGLESTORE_LICENSE_KEY }}
           EOF
